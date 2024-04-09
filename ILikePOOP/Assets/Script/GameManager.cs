@@ -28,10 +28,10 @@ public class GameManager : MonoBehaviour
         Text_Score.text = $"{score}";
     }
 
-    // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;
+        Player_Hp -= Time.deltaTime * 2f;
 
         if (time >= 1f)
         {
