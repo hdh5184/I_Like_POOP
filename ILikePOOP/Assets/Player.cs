@@ -33,17 +33,23 @@ public class Player : MonoBehaviour
     void Moving(Vector2 MovingVec)
     {
         transform.Translate(MovingVec * speed * Time.deltaTime);
+
+        transform.position = new Vector2(
+            Mathf.Clamp(transform.position.x, -2.5f, 2.5f), transform.position.y);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Object_A"))
         {
-            gm.score += 10; gm.Player_Hp += 5;
+            gm.score += 10;
+            gm.Player_Hp += 5;
+            if (gm.Player_Hp > 100) gm.Player_Hp = 100;
         }
         if (collision.CompareTag("Object_B"))
         {
-            gm.score -= 20; gm.Player_Hp -= 10;
+            gm.score -= 20;
+            gm.Player_Hp -= 10;
         }
 
         Destroy(collision.gameObject);
