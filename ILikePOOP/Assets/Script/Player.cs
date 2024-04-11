@@ -1,20 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static DropObject;
 
 public class Player : MonoBehaviour
 {
     GameManager gm;
 
-    float speed;
-    // Start is called before the first frame update
-    void Start()
+    float speed = 5f;
+
+    void Awake()
     {
         gm = GameManager.instance;
-        speed = 3f;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftArrow))    Moving(Vector2.left);
@@ -40,6 +39,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Floor")) return; //바닥 충돌 제외
+
+        //////////////임시 구현//////////////
         if (collision.CompareTag("Object_A"))
         {
             gm.score += 10;
@@ -51,9 +53,15 @@ public class Player : MonoBehaviour
             gm.score -= 20;
             gm.Player_Hp -= 10;
         }
+        ////////////////////////////////////
 
-        Destroy(collision.gameObject);
+        DropObject dropObject = collision.GetComponent<DropObject>();
 
-        Debug.Log(gm.score);
+        /* 
+         * 플레이어 체력은 100을 넘어가지 않도록 조정 필요
+         */
+
+
+        dropObject.gameObject.SetActive(false);
     }
 }
