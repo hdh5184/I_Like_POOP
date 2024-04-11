@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    // 플레이어 이동
     void Moving(Vector2 MovingVec)
     {
         transform.Translate(MovingVec * speed * Time.deltaTime);
@@ -37,10 +38,12 @@ public class Player : MonoBehaviour
             Mathf.Clamp(transform.position.x, -2.5f, 2.5f), transform.position.y);
     }
 
+    // 오브젝트 충돌 시
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Floor")) return; //바닥 충돌 제외
 
+        /*
         //////////////임시 구현//////////////
         if (collision.CompareTag("Object_A"))
         {
@@ -54,12 +57,13 @@ public class Player : MonoBehaviour
             gm.Player_Hp -= 10;
         }
         ////////////////////////////////////
+        */
 
         DropObject dropObject = collision.GetComponent<DropObject>();
 
-        /* 
-         * 플레이어 체력은 100을 넘어가지 않도록 조정 필요
-         */
+        gm.score += dropObject.ObjScore;
+        gm.Player_Hp += dropObject.ObjHp;
+        if (gm.Player_Hp > 100) gm.Player_Hp = 100;
 
 
         dropObject.gameObject.SetActive(false);

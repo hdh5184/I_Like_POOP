@@ -7,17 +7,21 @@ using UnityEditor.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    // 게임 관리
     public static GameManager instance;
     public PoolManager pool;
 
+    // UI
     public TextMeshProUGUI Text_Score;
     public Image HpBar_Fill;
 
+    // Background 스프라이트 저장
     public Sprite[] BackgroundSprite;
     public SpriteRenderer Background;
 
     public GameObject Player;
 
+    // 오브젝트 생성 타겟 (랜덤)
     string[] TargetPoolObj =
     {
         //pool에서 생성할 오브젝트 이름 모음
@@ -31,13 +35,15 @@ public class GameManager : MonoBehaviour
     public int score;
     public float Player_Hp;
 
-    int BonusObjCount = 0;
+    int BonusObjCount = 0; //보너스 똥 잔여 개수
 
+    // 게임 상태
     public enum GameState { Lobby, Play, Bonus, End }
     // Lobby : 게임 대기, Play : 게임 중
     // Bonus : 스테이지 클리어 - 보너스 스테이지, End : 게임 오버
 
     public GameState gameState;
+
 
     private void Awake()
     {
@@ -123,10 +129,12 @@ public class GameManager : MonoBehaviour
          */
     }
 
+    // 게임 오버
     void GameOver()
     {
         // 플레이어 죽은 스테이지에서 점수 체크하고 다시 시작 버튼 출력
     }
 
+    // 게임 재시작 시 게임 초기화
     public void GameRestart() => GameInit();
 }

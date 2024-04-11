@@ -6,12 +6,12 @@ public class DropObject : MonoBehaviour
 {
     GameManager gm; //게임 관리
 
-    public DropObjectType dropObjectType;
-
+    // 오브젝트 데이터
     public int ObjScore;
     public int ObjHp;
     public int Speed = 3;
 
+    // 오브젝트 타입
     public enum DropObjectType
     {
         /* 
@@ -21,12 +21,14 @@ public class DropObject : MonoBehaviour
          * Component에 오브젝트 별 dropObjectType 지정
          * 
          * 예시)
-         * Poop_Normal, Poop_Gold, ...
+         * Poop_Normal, Tissue, ...
          * 
          * 참고 : 보너스 각진 똥은 바닥에 꺼지지 않도록 함
          */
     }
+    public DropObjectType dropObjectType;
 
+    // 오브젝트 초기 설정
     private void Awake()
     {
         gm = GameManager.instance;
