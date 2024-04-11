@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     string[] TargetPoolObj =
     {
         //pool에서 생성할 오브젝트 이름 모음
-        "test"
+        //보너스 똥을 제외한 나머지 똥 및 장애물 전부 
+        //예시 : "Poop_Normal", "Tissue", ....
     };
 
     float dropTime;
@@ -102,8 +103,9 @@ public class GameManager : MonoBehaviour
     // 오브젝트 드롭
     void Drop()
     {
-        GameObject dropObject =
-                pool.MakeObject(TargetPoolObj[Random.Range(0, TargetPoolObj.Length)]);
+        // TargetPoolObj 내 요소 랜덤 선택
+        GameObject dropObject = pool.MakeObject(
+            TargetPoolObj[Random.Range(0, TargetPoolObj.Length)]);
 
         dropObject.transform.position = new Vector2(Random.Range(-2.5f, 2.5f), 6);
         dropObject.SetActive(true);
@@ -117,6 +119,7 @@ public class GameManager : MonoBehaviour
         BonusObjCount = 5;
         /* 보너스 각진 똥이 5개 떨어짐
          * pool을 사용하여 보너스 각진 똥 5개 생성
+         * MakeObject(<보너스 똥 문자열>);
          */
     }
 

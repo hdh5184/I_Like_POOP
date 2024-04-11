@@ -17,6 +17,7 @@ public class DropObject : MonoBehaviour
         /* 
          * 상단에서 떨어지는 오브젝트 타입 모음
          * 똥, 장애물 별 개별 구성
+         * 보너스 똥 포함
          * Component에 오브젝트 별 dropObjectType 지정
          * 
          * 예시)
