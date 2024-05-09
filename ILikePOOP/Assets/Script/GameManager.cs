@@ -88,6 +88,9 @@ public class GameManager : MonoBehaviour
                 dropTime += Time.deltaTime;
                 Player_Hp -= Time.deltaTime * 2f;
 
+                // 플레이어가 체력이 다 떨어지면 게임을 끝내도록 조건문 추가
+                // 게임 상태를 GameState.End로 변경, return
+
                 if (dropTime >= 1f) Drop();
 
                 HpBar_Fill.fillAmount = Player_Hp / 100;
@@ -116,7 +119,9 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameState.End:
-                
+
+                // 게임 오버 수행
+                GameOver();
                 break;
         }
     }
