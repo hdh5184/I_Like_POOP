@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
 
     public int stage;
     public int score;
+    //public int fscore = 100;
+    //public int Sscore = 200;
+    int[] score_goul = {100, 200, 300}; 
     public float Player_Hp;
 
     int BonusObjCount = 0; //보너스 똥 잔여 개수
@@ -91,9 +94,10 @@ public class GameManager : MonoBehaviour
                 Text_Score.text = $"{score}";
 
                 // 스테이지 통과 조건 점수 이상 달성 시 StageClear() 실행
-                if (score >= 100)
+                if(score >= score_goul[stage - 1])
                 {
-                    StageClear();
+                   StageClear();
+                   gameState = GameState.Bonus;
                 }
                 break;
 
