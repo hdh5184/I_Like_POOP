@@ -7,11 +7,16 @@ public class Player : MonoBehaviour
 {
     GameManager gm;
 
+    SpriteRenderer sr;
+    Animator animator;
+
     float speed = 5f;
 
     void Awake()
     {
         gm = GameManager.instance;
+        sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -21,11 +26,18 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
+            animator.SetBool("isRun", true);
+
             Vector3 point = Camera.main.ScreenToViewportPoint(new Vector3
                 (Input.mousePosition.x, Input.mousePosition.y, 0));
 
-            if (point.x <= 0.5) Moving(Vector2.left);
-            else Moving(Vector2.right);
+            if (point.x <= 0.5) { Moving(Vector2.left); sr.flipX = false; }
+            else                { Moving(Vector2.right); sr.flipX = true; }
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            animator.SetBool("isRun", false);
         }
     }
 
