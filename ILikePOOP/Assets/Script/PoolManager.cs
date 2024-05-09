@@ -12,7 +12,8 @@ public class PoolManager : MonoBehaviour
         prefab_Tissue,
         prefab_Phone,
         prefab_Paper_Cup,
-        prefab_Cigarette_Butt;
+        prefab_Cigarette_Butt,
+        prefab_Trash_Bag;
 
     GameObject[]
         pool_Poop_Normal,
@@ -21,10 +22,12 @@ public class PoolManager : MonoBehaviour
         pool_Tissue,
         pool_Phone,
         pool_Paper_Cup,
-        pool_Cigarette_Butt;
+        pool_Cigarette_Butt,
+        pool_Trash_Bag;
 
     private void Awake()
     {
+        /*
         MakePool(prefab_Poop_Normal, ref pool_Poop_Normal, 20);
         MakePool(prefab_Poop_Golden, ref pool_Poop_Golden, 20);
         MakePool(prefab_Poop_Bonus, ref pool_Poop_Bouns, 20);
@@ -32,6 +35,8 @@ public class PoolManager : MonoBehaviour
         MakePool(prefab_Phone, ref pool_Phone, 20);
         MakePool(prefab_Paper_Cup, ref pool_Paper_Cup, 20);
         MakePool(prefab_Cigarette_Butt, ref pool_Cigarette_Butt, 20);
+        MakePool(prefab_Trash_Bag, ref pool_Trash_Bag, 20);
+        */
     }
 
 
@@ -52,12 +57,13 @@ public class PoolManager : MonoBehaviour
         switch (objName)
         {
             case "Poop_Normal":     targetPool = pool_Poop_Normal; break;
-            case "Golden Poop":     targetPool = pool_Poop_Golden; break;
-            case "Bonus Poop":      targetPool = pool_Poop_Bouns; break;
+            case "Golden_Poop":     targetPool = pool_Poop_Golden; break;
+            case "Bonus_Poop":      targetPool = pool_Poop_Bouns; break;
             case "Tissue":          targetPool = pool_Tissue; break;
             case "Phone":           targetPool = pool_Phone; break;
             case "Paper_Cup":       targetPool = pool_Paper_Cup; break;
             case "Cigarette_Butt":  targetPool = pool_Cigarette_Butt; break;
+            case "Trash_Bag":       targetPool = pool_Trash_Bag; break;
 
             default: targetPool = null; break;
         }
