@@ -30,7 +30,7 @@ public class PoolManager : MonoBehaviour
     }
 
 
-    void MakeObj(GameObject prefab, ref GameObject[] pool, int count)
+    void MakePool(GameObject prefab, ref GameObject[] pool, int count)
     {
         pool = new GameObject[count];
         for (int i = 0; i < pool.Length; i++)
