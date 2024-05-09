@@ -91,16 +91,23 @@ public class GameManager : MonoBehaviour
                 Text_Score.text = $"{score}";
 
                 // 스테이지 통과 조건 점수 이상 달성 시 StageClear() 실행
-
+                if (score >= 100)
+                {
+                    StageClear();
+                }
                 break;
 
             case GameState.Bonus:
 
                 // 보너스 스테이지
-                // 플레이어 체력 감소 없음
-                // 보너스 똥 이외 생성 안함
+
                 // 점수 표시 유지 (보너스 똥 점수 +)
+                Text_Score.text = $"{score}";
                 // 보너스 똥을 모두 획득 시 StageInit() 실행
+                if (BonusObjCount == 0)
+                {
+                    StageInit();
+                }
 
                 break;
 
@@ -133,6 +140,13 @@ public class GameManager : MonoBehaviour
          * pool을 사용하여 보너스 각진 똥 5개 생성
          * MakeObject(<보너스 똥 문자열>);
          */
+        for (int i = 0; i < 5; i++)
+        {
+            // 보너스 똥을 생성하고 활성화합니다.
+            GameObject bonusObj = pool.MakeObject("Bonus_Poop"); // 보너스 똥의 이름은 "Bonus_Poop"으로 가정합니다.
+            bonusObj.transform.position = new Vector2(Random.Range(-2.5f, 2.5f), 6);
+            bonusObj.SetActive(true);
+        }
     }
 
     // 게임 오버
