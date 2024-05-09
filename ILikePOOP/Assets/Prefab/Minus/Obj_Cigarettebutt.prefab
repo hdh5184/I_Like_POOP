@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5484898631572557171}
   - component: {fileID: 5566463048962196448}
   - component: {fileID: 3362861257759640524}
+  - component: {fileID: -5263278551972096519}
   m_Layer: 0
   m_Name: Obj_Cigarettebutt
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,3 +121,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 7.33, y: 2.83}
   m_Direction: 1
+--- !u!114 &-5263278551972096519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9087708896162715919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54a9266dc93b467584e9c25e472486b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjScore: 0
+  ObjHp: 0
+  Speed: 3
+  dropObjectType: 0

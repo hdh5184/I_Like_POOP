@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1401031868337285211}
   - component: {fileID: 4721407555403243949}
   - component: {fileID: 1249198732913487032}
+  - component: {fileID: 7515833827560994127}
   m_Layer: 0
   m_Name: Obj_TrashBag
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,3 +121,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.4}
   serializedVersion: 2
   m_Radius: 4.53
+--- !u!114 &7515833827560994127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4155415027090149091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54a9266dc93b467584e9c25e472486b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjScore: 0
+  ObjHp: 0
+  Speed: 3
+  dropObjectType: 0
