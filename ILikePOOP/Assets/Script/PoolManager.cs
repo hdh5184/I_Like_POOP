@@ -5,28 +5,33 @@ using UnityEngine.Windows;
 
 public class PoolManager : MonoBehaviour
 {
-    /* 
-     * 1. 상단에 떨어질 오브젝트 프리펩 가져오기
-     * 
-     * 예시)
-     * public GameObject 똥
-     * public GameObject 장애물
-     * 
-     * 2. 오브젝트를 관리하는 pool 생성
-     * 
-     * 예시)
-     * public GameObject[] pool_똥
-     * 
-     */
+    public GameObject
+        prefab_Poop_Normal,
+        prefab_Poop_Golden,
+        prefab_Poop_Bonus,
+        prefab_Tissue,
+        prefab_Phone,
+        prefab_Paper_Cup,
+        prefab_Cigarette_Butt;
 
-
+    GameObject[]
+        pool_Poop_Normal,
+        pool_Poop_Golden,
+        pool_Poop_Bouns,
+        pool_Tissue,
+        pool_Phone,
+        pool_Paper_Cup,
+        pool_Cigarette_Butt;
 
     private void Awake()
     {
-        /* 
-         * MakeObj 메서드를 이용하여 pool 저장
-         * 양식을 사용하여 prefab 별로 개별 생성
-         */
+        MakePool(prefab_Poop_Normal, ref pool_Poop_Normal, 20);
+        MakePool(prefab_Poop_Golden, ref pool_Poop_Golden, 20);
+        MakePool(prefab_Poop_Bonus, ref pool_Poop_Bouns, 20);
+        MakePool(prefab_Tissue, ref pool_Tissue, 20);
+        MakePool(prefab_Phone, ref pool_Phone, 20);
+        MakePool(prefab_Paper_Cup, ref pool_Paper_Cup, 20);
+        MakePool(prefab_Cigarette_Butt, ref pool_Cigarette_Butt, 20);
     }
 
 
@@ -42,24 +47,21 @@ public class PoolManager : MonoBehaviour
 
     public GameObject MakeObject(string objName)
     {
-        GameObject targetPool = null;
+        GameObject[] targetPool = null;
 
-        /* 
-         * GameManager 등 외부로부터 오브젝트 생성 요청 시 메서드 실행
-         * 매개변수 objName을 사용하여 생성할 오브젝트 타겟 지정
-         * switch문을 사용하여 구현
-         */
+        switch (objName)
+        {
+            case "Poop_Normal":     targetPool = pool_Poop_Normal; break;
+            case "Golden Poop":     targetPool = pool_Poop_Golden; break;
+            case "Bonus Poop":      targetPool = pool_Poop_Bouns; break;
+            case "Tissue":          targetPool = pool_Tissue; break;
+            case "Phone":           targetPool = pool_Phone; break;
+            case "Paper_Cup":       targetPool = pool_Paper_Cup; break;
+            case "Cigarette_Butt":  targetPool = pool_Cigarette_Butt; break;
 
+            default: targetPool = null; break;
+        }
 
-        //예시)
-        //switch (objName)
-        //{
-        //    case "object_A": targetPool = object_A의 pool; break;
-
-        //    default: targetPool = null; break;
-        //}
-
-        /*
         if (targetPool != null)
         {
             for (int i = 0; i < targetPool.Length; i++)
@@ -71,9 +73,8 @@ public class PoolManager : MonoBehaviour
                 }
             }
         }
-        */
 
-        //예외 처리 (Console Log)
+        //예외 처리
         Debug.Log($"\"{objName}\" 오브젝트의 여분이 없거나 찾을 수 없습니다.");
         return null;
     }
