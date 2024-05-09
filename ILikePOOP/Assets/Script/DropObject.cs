@@ -11,9 +11,20 @@ public class DropObject : MonoBehaviour
     public int ObjHp;
     public int Speed = 3;
 
+
+
     // 오브젝트 타입
     public enum DropObjectType
     {
+        Normal_Poop,
+        Golden_Poop,
+
+        //장애물   
+        Tissue,
+        Phone,
+        Paper_Cup,
+        Cigarette_Butt
+
         /* 
          * 상단에서 떨어지는 오브젝트 타입 모음
          * 똥, 장애물 별 개별 구성
@@ -33,12 +44,43 @@ public class DropObject : MonoBehaviour
     {
         gm = GameManager.instance;
 
+        switch (dropObjectType)
+        {
+            case DropObjectType.Normal_Poop:
+                gm.score += 5;
+                break;
+
+            case DropObjectType.Golden_Poop:
+                gm.score += 10;
+                break;
+
+            case DropObjectType.Tissue:
+                gm.Player_Hp -= 5;
+                break;
+
+            case DropObjectType.Phone:
+                gm.Player_Hp -= 5;
+                break;
+
+            case DropObjectType.Paper_Cup:
+                gm.Player_Hp -= 10;
+                break;
+
+            case DropObjectType.Cigarette_Butt:
+                gm.Player_Hp -= 15;
+                break;
+
+        }
+
         /* 
          * dropObjectType별 플레이어 충돌 시 적용 점수 및 체력 개별 설정
          * switch문을 사용하여 구현
          */
 
+
+
     }
+
 
     void Update()
     {
