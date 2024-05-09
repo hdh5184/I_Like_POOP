@@ -24,9 +24,15 @@ public class GameManager : MonoBehaviour
     // 오브젝트 생성 타겟 (랜덤)
     string[] TargetPoolObj =
     {
+            "Poop_Normal",//기본 똥
+            "Golden Poop", //황금 똥
+            "Tissue",//티슈
+            "Phone", //폰
+            "Paper cup", //종이컵
+            "Cigarette butt"//담배 꽁초
+        
         //pool에서 생성할 오브젝트 이름 모음
         //보너스 똥을 제외한 나머지 똥 및 장애물 전부 
-        //예시 : "Poop_Normal", "Tissue", ....
     };
 
     float dropTime;
