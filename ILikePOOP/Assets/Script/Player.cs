@@ -21,8 +21,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))    Moving(Vector2.left);
-        if (Input.GetKey(KeyCode.RightArrow))   Moving(Vector2.right);
+        if (Input.GetKey(KeyCode.LeftArrow)) Moving(Vector2.left);
+        if (Input.GetKey(KeyCode.RightArrow)) Moving(Vector2.right);
 
         if (Input.GetMouseButton(0))
         {
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
                 (Input.mousePosition.x, Input.mousePosition.y, 0));
 
             if (point.x <= 0.5) { Moving(Vector2.left); sr.flipX = false; }
-            else                { Moving(Vector2.right); sr.flipX = true; }
+            else { Moving(Vector2.right); sr.flipX = true; }
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -62,13 +62,14 @@ public class Player : MonoBehaviour
             gm.Player_Hp += triggerObj.ObjHp;
             if (gm.Player_Hp > 100) gm.Player_Hp = 100;
 
-        DropObject dropObject = collision.GetComponent<DropObject>();
+            DropObject dropObject = collision.GetComponent<DropObject>();
 
-        gm.score += dropObject.ObjScore;
-        gm.Player_Hp += dropObject.ObjHp;
-        if (gm.Player_Hp > 100) gm.Player_Hp = 100;
+            gm.score += dropObject.ObjScore;
+            gm.Player_Hp += dropObject.ObjHp;
+            if (gm.Player_Hp > 100) gm.Player_Hp = 100;
 
 
-        dropObject.gameObject.SetActive(false);
+            dropObject.gameObject.SetActive(false);
+        }
     }
 }
