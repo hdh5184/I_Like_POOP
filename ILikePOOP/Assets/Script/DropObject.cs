@@ -46,6 +46,17 @@ public class DropObject : MonoBehaviour
 
         switch (dropObjectType)
         {
+            /* 수정 사항
+             * 
+             * GameManager의 score 및 Player_Hp에 변동을 적용하는 것이 아닌
+             * ObjScore 및 ObjHp에 점수와 체력을 저장하는 것으로 수정하기
+             * 
+             * 플레이어가 똥 획득 시 점수와 체력 증가
+             * 플레이어가 장애물 획득 시 체력만 감소하도록 설정
+             * 
+             */
+
+
             case DropObjectType.Normal_Poop:
                 gm.score += 5;
                 break;
@@ -71,20 +82,12 @@ public class DropObject : MonoBehaviour
                 break;
 
         }
-
-        /* 
-         * dropObjectType별 플레이어 충돌 시 적용 점수 및 체력 개별 설정
-         * switch문을 사용하여 구현
-         */
-
-
-
     }
 
 
     void Update()
     {
         // 보너스 똥은 이동 제외 (중력 적용)
-        transform.Translate(Vector2.down * Speed * Time.deltaTime);
+        //transform.Translate(Vector2.down * Speed * Time.deltaTime);
     }
 }

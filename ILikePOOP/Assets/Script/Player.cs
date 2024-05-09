@@ -55,21 +55,12 @@ public class Player : MonoBehaviour
     {
         if (collision.CompareTag("Floor")) return; //바닥 충돌 제외
 
-        /*
-        //////////////임시 구현//////////////
-        if (collision.CompareTag("Object_A"))
+        if (collision.CompareTag("Object"))
         {
-            gm.score += 10;
-            gm.Player_Hp += 5;
+            DropObject triggerObj = collision.GetComponent<DropObject>();
+            gm.score += triggerObj.ObjScore;
+            gm.Player_Hp += triggerObj.ObjHp;
             if (gm.Player_Hp > 100) gm.Player_Hp = 100;
-        }
-        if (collision.CompareTag("Object_B"))
-        {
-            gm.score -= 20;
-            gm.Player_Hp -= 10;
-        }
-        ////////////////////////////////////
-        */
 
         DropObject dropObject = collision.GetComponent<DropObject>();
 
