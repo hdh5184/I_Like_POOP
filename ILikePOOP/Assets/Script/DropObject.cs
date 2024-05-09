@@ -5,7 +5,7 @@ using UnityEngine;
 public class DropObject : MonoBehaviour
 {
     GameManager gm; //게임 관리
-
+    
     // 오브젝트 데이터
     public int ObjScore;
     public int ObjHp;
@@ -18,12 +18,14 @@ public class DropObject : MonoBehaviour
     {
         Normal_Poop,
         Golden_Poop,
+        Bonus_Poop,
 
         //장애물   
         Tissue,
         Phone,
         Paper_Cup,
-        Cigarette_Butt
+        Cigarette_Butt,
+        Trash_Bag
 
         /* 
          * 상단에서 떨어지는 오브젝트 타입 모음
@@ -54,6 +56,10 @@ public class DropObject : MonoBehaviour
                 gm.score += 10;
                 break;
 
+            case DropObjectType.Bonus_Poop:
+                gm.score += 15;
+                break;
+
             case DropObjectType.Tissue:
                 gm.Player_Hp -= 5;
                 break;
@@ -63,6 +69,10 @@ public class DropObject : MonoBehaviour
                 break;
 
             case DropObjectType.Paper_Cup:
+                gm.Player_Hp -= 10;
+                break;
+
+            case DropObjectType.Trash_Bag:
                 gm.Player_Hp -= 10;
                 break;
 
