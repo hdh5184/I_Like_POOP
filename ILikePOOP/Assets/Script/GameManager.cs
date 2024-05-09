@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
             "Phone", //폰
             "Paper_cup", //종이컵
             "Cigarette_butt",//담배 꽁초
-            "Trash_Bag"//담배 꽁초
+            "Trash_Bag"//쓰레기봉투
         //pool에서 생성할 오브젝트 이름 모음
         //보너스 똥을 제외한 나머지 똥 및 장애물 전부 
     };
