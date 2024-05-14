@@ -60,35 +60,38 @@ public class DropObject : MonoBehaviour
 
 
             case DropObjectType.Normal_Poop:
-                gm.score += 5;
+                ObjScore += 5;
+                ObjHp += 5;
                 break;
 
             case DropObjectType.Golden_Poop:
-                gm.score += 10;
+                ObjScore += 10;
+                ObjHp += 10;
                 break;
 
             case DropObjectType.Bonus_Poop:
-                gm.score += 15;
+                ObjScore += 15;
+                ObjHp += 15;
                 break;
 
             case DropObjectType.Tissue:
-                gm.Player_Hp -= 5;
+                ObjHp -= 5;
                 break;
 
             case DropObjectType.Phone:
-                gm.Player_Hp -= 5;
+                ObjHp -= 5;
                 break;
 
             case DropObjectType.Paper_Cup:
-                gm.Player_Hp -= 10;
+                ObjHp -= 10;
                 break;
 
             case DropObjectType.Trash_Bag:
-                gm.Player_Hp -= 10;
+                ObjHp -= 10;
                 break;
 
             case DropObjectType.Cigarette_Butt:
-                gm.Player_Hp -= 15;
+                ObjHp -= 15;
                 break;
 
         }
