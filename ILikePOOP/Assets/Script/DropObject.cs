@@ -19,6 +19,7 @@ public class DropObject : MonoBehaviour
         Normal_Poop,
         Golden_Poop,
         Bonus_Poop,
+        Diamond_Poop,
 
         //장애물   
         Tissue,
@@ -70,6 +71,11 @@ public class DropObject : MonoBehaviour
                 break;
 
             case DropObjectType.Bonus_Poop:
+                ObjScore += 15;
+                ObjHp += 15;
+                break;
+
+            case DropObjectType.Diamond_Poop:
                 ObjScore += 15;
                 ObjHp += 15;
                 break;
