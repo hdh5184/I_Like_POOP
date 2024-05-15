@@ -3,7 +3,14 @@ guid: b15ae538a0f434770849f8594c21ba19
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pool: {instanceID: 0}
+  - Text_Score: {instanceID: 0}
+  - HpBar_Fill: {instanceID: 0}
+  - GmaeOverText: {instanceID: 0}
+  - RestartButton: {fileID: 4815354142199740958, guid: 3eafa80fe87c28f4085a67fcc9dc1985, type: 3}
+  - Background: {instanceID: 0}
+  - Player: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

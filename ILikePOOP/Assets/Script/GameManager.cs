@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,12 +15,15 @@ public class GameManager : MonoBehaviour
     // UI
     public TextMeshProUGUI Text_Score;
     public Image HpBar_Fill;
+    public TMP_Text GmaeOverText;
+    public GameObject RestartButton;
 
     // Background 스프라이트 저장
     public Sprite[] BackgroundSprite;
     public SpriteRenderer Background;
 
     public GameObject Player;
+  
 
     // 오브젝트 생성 타겟 (랜덤)
     string[] TargetPoolObj =
@@ -31,16 +35,13 @@ public class GameManager : MonoBehaviour
             "Paper_cup", //종이컵
             "Cigarette_butt",//담배 꽁초
             "Trash_Bag"//쓰레기봉투
-        //pool에서 생성할 오브젝트 이름 모음
-        //보너스 똥을 제외한 나머지 똥 및 장애물 전부 
     };
 
     float dropTime;
 
     public int stage;
     public int score;
-    //public int fscore = 100;
-    //public int Sscore = 200;
+    
     int[] score_goul = {100, 200, 300}; 
     public float Player_Hp;
 
@@ -90,6 +91,11 @@ public class GameManager : MonoBehaviour
 
                 // 플레이어가 체력이 다 떨어지면 게임을 끝내도록 조건문 추가
                 // 게임 상태를 GameState.End로 변경, return
+                if (Player_Hp <= 0)
+                {
+                    gameState = GameState.End;
+                    return;
+                }
 
                 if (dropTime >= 1f) Drop();
 
@@ -102,15 +108,15 @@ public class GameManager : MonoBehaviour
                    StageClear();
                    gameState = GameState.Bonus;
                 }
+                else if(score <= 0)
+                {
+                    gameState = GameState.End;
+                }
                 break;
 
             case GameState.Bonus:
 
-                // 보너스 스테이지
-
-                // 점수 표시 유지 (보너스 똥 점수 +)
                 Text_Score.text = $"{score}";
-                // 보너스 똥을 모두 획득 시 StageInit() 실행
                 if (BonusObjCount == 0)
                 {
                     StageInit();
@@ -120,7 +126,6 @@ public class GameManager : MonoBehaviour
 
             case GameState.End:
 
-                // 게임 오버 수행
                 GameOver();
                 break;
         }
@@ -145,14 +150,10 @@ public class GameManager : MonoBehaviour
     void StageClear()
     {
         BonusObjCount = 5;
-        /* 보너스 각진 똥이 5개 떨어짐
-         * pool을 사용하여 보너스 각진 똥 5개 생성
-         * MakeObject(<보너스 똥 문자열>);
-         */
+     
         for (int i = 0; i < 5; i++)
         {
-            // 보너스 똥을 생성하고 활성화합니다.
-            GameObject bonusObj = pool.MakeObject("Bonus_Poop"); // 보너스 똥의 이름은 "Bonus_Poop"으로 가정합니다.
+            GameObject bonusObj = pool.MakeObject("Bonus_Poop"); 
             bonusObj.transform.position = new Vector2(Random.Range(-2.5f, 2.5f), 6);
             bonusObj.SetActive(true);
         }
@@ -161,7 +162,15 @@ public class GameManager : MonoBehaviour
     // 게임 오버
     void GameOver()
     {
-        // 플레이어 죽은 스테이지에서 점수 체크하고 다시 시작 버튼 출력
+        GmaeOverText.gameObject.SetActive(true);
+        RestartButton.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    // ReStart버튼 클릭시 게임 다시 초기화
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     // 게임 재시작 시 게임 초기화
