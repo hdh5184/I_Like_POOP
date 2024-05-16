@@ -75,28 +75,28 @@ public class DropObject : MonoBehaviour
                 ObjHp += 15;
                 break;
 
-            case DropObjectType.Diamond_Poop:
-                ObjScore += 15;
-                ObjHp += 15;
-                break;
-
             case DropObjectType.Tissue:
+                ObjScore -= 7;
                 ObjHp -= 5;
                 break;
 
             case DropObjectType.Phone:
+                ObjScore -= 7;
                 ObjHp -= 5;
                 break;
 
             case DropObjectType.Paper_Cup:
+                ObjScore -= 7;
                 ObjHp -= 10;
                 break;
 
             case DropObjectType.Trash_Bag:
+                ObjScore -= 7;
                 ObjHp -= 10;
                 break;
 
             case DropObjectType.Cigarette_Butt:
+                ObjScore -= 7;
                 ObjHp -= 15;
                 break;
 
