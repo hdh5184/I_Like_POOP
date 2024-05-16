@@ -27,7 +27,6 @@ public class PoolManager : MonoBehaviour
 
     private void Awake()
     {
-        /*
         MakePool(prefab_Poop_Normal, ref pool_Poop_Normal, 20);
         MakePool(prefab_Poop_Golden, ref pool_Poop_Golden, 20);
         MakePool(prefab_Poop_Bonus, ref pool_Poop_Bouns, 20);
@@ -36,7 +35,6 @@ public class PoolManager : MonoBehaviour
         MakePool(prefab_Paper_Cup, ref pool_Paper_Cup, 20);
         MakePool(prefab_Cigarette_Butt, ref pool_Cigarette_Butt, 20);
         MakePool(prefab_Trash_Bag, ref pool_Trash_Bag, 20);
-        */
     }
 
 

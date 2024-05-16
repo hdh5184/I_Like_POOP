@@ -781,9 +781,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15ae538a0f434770849f8594c21ba19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pool: {fileID: 0}
+  pool: {fileID: 946428761}
   Text_Score: {fileID: 1189334318}
-  HpBar_Fill: {fileID: 0}
+  HpBar_Fill: {fileID: 1070699068}
   GmaeOverText: {fileID: 542093247}
   RestartButton: {fileID: 369040314}
   BackgroundSprite:

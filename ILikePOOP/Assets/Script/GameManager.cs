@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviour
             "Golden_Poop", //황금 똥
             "Tissue",//티슈
             "Phone", //폰
-            "Paper_cup", //종이컵
-            "Cigarette_butt",//담배 꽁초
+            "Paper_Cup", //종이컵
+            "Cigarette_Butt",//담배 꽁초
             "Trash_Bag"//쓰레기봉투
     };
 
@@ -58,13 +58,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        //gameState = GameState.Lobby;
+        GameInit();
     }
 
     // 게임 초기화 (게임 시작 시 초기화)
     void GameInit()
     {
         stage = 0;
+        gameState = GameState.Play;
         StageInit();
     }
 
@@ -76,7 +77,7 @@ public class GameManager : MonoBehaviour
         score = 0;
         Player_Hp = 100;
         dropTime = 0;
-        Background.sprite = BackgroundSprite[stage];
+        Background.sprite = BackgroundSprite[stage - 1];
         Text_Score.text = $"{score}";
     }
 
@@ -107,10 +108,6 @@ public class GameManager : MonoBehaviour
                 {
                    StageClear();
                    gameState = GameState.Bonus;
-                }
-                else if(score <= 0)
-                {
-                    gameState = GameState.End;
                 }
                 break;
 

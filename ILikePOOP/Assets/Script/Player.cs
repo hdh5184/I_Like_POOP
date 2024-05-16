@@ -14,6 +14,11 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        
+    }
+
+    private void Start()
+    {
         gm = GameManager.instance;
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
