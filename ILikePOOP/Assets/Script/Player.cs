@@ -63,6 +63,7 @@ public class Player : MonoBehaviour
 
             gm.score += dropObject.ObjScore;
             gm.Player_Hp += dropObject.ObjHp;
+            if (gm.score < 0) gm.score = 0;
             if (gm.Player_Hp > 100) gm.Player_Hp = 100;
 
 
