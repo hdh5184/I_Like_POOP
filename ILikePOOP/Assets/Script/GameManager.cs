@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public SpriteRenderer Background;
 
     public GameObject Player;
-  
+
 
     // 오브젝트 생성 타겟 (랜덤)
     string[] TargetPoolObj =
@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour
 
     public int stage;
     public int score;
-    
-    int[] score_goul = {100, 200, 300}; 
+
+    int[] score_goul = { 100, 200, 300 };
     public float Player_Hp;
 
     int BonusObjCount = 0; //보너스 똥 잔여 개수
@@ -65,7 +65,11 @@ public class GameManager : MonoBehaviour
     void GameInit()
     {
         stage = 0;
+        score = 0;
         gameState = GameState.Play;
+        GmaeOverText.gameObject.SetActive(false);
+        RestartButton.SetActive(false);
+        Time.timeScale = 1f;
         StageInit();
     }
 
@@ -104,10 +108,10 @@ public class GameManager : MonoBehaviour
                 Text_Score.text = $"{score}";
 
                 // 스테이지 통과 조건 점수 이상 달성 시 StageClear() 실행
-                if(score >= score_goul[stage - 1])
+                if (score >= score_goul[stage - 1])
                 {
-                   StageClear();
-                   gameState = GameState.Bonus;
+                    StageClear();
+                    gameState = GameState.Bonus;
                 }
                 break;
 
@@ -147,10 +151,10 @@ public class GameManager : MonoBehaviour
     void StageClear()
     {
         BonusObjCount = 5;
-     
+
         for (int i = 0; i < 5; i++)
         {
-            GameObject bonusObj = pool.MakeObject("Bonus_Poop"); 
+            GameObject bonusObj = pool.MakeObject("Bonus_Poop");
             bonusObj.transform.position = new Vector2(Random.Range(-2.5f, 2.5f), 6);
             bonusObj.SetActive(true);
         }
@@ -163,10 +167,10 @@ public class GameManager : MonoBehaviour
         RestartButton.SetActive(true);
         Time.timeScale = 0f;
     }
+
     // ReStart버튼 클릭시 게임 다시 초기화
     public void RestartGame()
     {
-        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
