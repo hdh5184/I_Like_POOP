@@ -173,7 +173,4 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-    // 게임 재시작 시 게임 초기화
-    public void GameRestart() => GameInit();
 }

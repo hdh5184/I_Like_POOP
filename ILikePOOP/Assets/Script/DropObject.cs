@@ -108,5 +108,8 @@ public class DropObject : MonoBehaviour
     {
         // 보너스 똥은 이동 제외 (중력 적용)
         //transform.Translate(Vector2.down * Speed * Time.deltaTime);
+        Vector2 pos = transform.position;
+        transform.position = new Vector2(
+            Mathf.Clamp(pos.x, -2.5f, 2.5f), pos.y);
     }
 }
