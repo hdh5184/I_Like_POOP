@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54a9266dc93b467584e9c25e472486b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjScore: 0
-  ObjHp: 0
+  ObjScore: 15
+  ObjHp: 15
   Speed: 3
   dropObjectType: 2

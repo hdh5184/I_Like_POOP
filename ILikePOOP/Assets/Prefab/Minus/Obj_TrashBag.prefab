@@ -162,6 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjScore: 0
-  ObjHp: 0
+  ObjHp: -10
   Speed: 3
   dropObjectType: 8
