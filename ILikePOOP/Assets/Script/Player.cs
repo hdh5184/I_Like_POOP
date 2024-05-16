@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     SpriteRenderer sr;
     Animator animator;
 
+    Vector2 PlayerMoveVec;
+
     float speed = 5f;
 
     private void Start()
@@ -18,13 +20,16 @@ public class Player : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
 
+        PlayerMoveVec = Vector2.zero;
         transform.position = new Vector3(0, -3f);
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow)) Moving(Vector2.left);
-        if (Input.GetKey(KeyCode.RightArrow)) Moving(Vector2.right);
+        if (Input.GetKey(KeyCode.LeftArrow))
+            PlayerMoveVec = Vector2.left;
+        if (Input.GetKey(KeyCode.RightArrow))
+            PlayerMoveVec = Vector2.right;
 
         if (Input.GetMouseButton(0))
         {
@@ -33,20 +38,22 @@ public class Player : MonoBehaviour
             Vector3 point = Camera.main.ScreenToViewportPoint(new Vector3
                 (Input.mousePosition.x, Input.mousePosition.y, 0));
 
-            if (point.x <= 0.5) { Moving(Vector2.left); sr.flipX = false; }
-            else { Moving(Vector2.right); sr.flipX = true; }
+            if (point.x <= 0.5) { PlayerMoveVec = Vector2.left; sr.flipX = false; }
+            else { PlayerMoveVec = Vector2.right; sr.flipX = true; }
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             animator.SetBool("isRun", false);
         }
+
+        Moving();
     }
 
     // 플레이어 이동
-    void Moving(Vector2 MovingVec)
+    void Moving()
     {
-        transform.Translate(MovingVec * speed * Time.deltaTime);
+        transform.Translate(PlayerMoveVec * speed * Time.deltaTime);
 
         transform.position = new Vector2(
             Mathf.Clamp(transform.position.x, -2.5f, 2.5f), transform.position.y);
