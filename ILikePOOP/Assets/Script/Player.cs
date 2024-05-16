@@ -12,16 +12,13 @@ public class Player : MonoBehaviour
 
     float speed = 5f;
 
-    void Awake()
-    {
-        
-    }
-
     private void Start()
     {
         gm = GameManager.instance;
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+
+        transform.position = new Vector3(0, -3f);
     }
 
     void Update()
@@ -62,11 +59,6 @@ public class Player : MonoBehaviour
 
         if (collision.CompareTag("Object"))
         {
-            DropObject triggerObj = collision.GetComponent<DropObject>();
-            gm.score += triggerObj.ObjScore;
-            gm.Player_Hp += triggerObj.ObjHp;
-            if (gm.Player_Hp > 100) gm.Player_Hp = 100;
-
             DropObject dropObject = collision.GetComponent<DropObject>();
 
             gm.score += dropObject.ObjScore;
@@ -74,6 +66,21 @@ public class Player : MonoBehaviour
             if (gm.Player_Hp > 100) gm.Player_Hp = 100;
 
 
+            dropObject.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Object_B")
+        {
+            DropObject dropObject = collision.gameObject.GetComponent<DropObject>();
+
+            gm.score += dropObject.ObjScore;
+            gm.Player_Hp += dropObject.ObjHp;
+            if (gm.Player_Hp > 100) gm.Player_Hp = 100;
+
+            gm.BonusObjCount--;
             dropObject.gameObject.SetActive(false);
         }
     }

@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     int[] score_goul = { 100, 200, 300 };
     public float Player_Hp;
 
-    int BonusObjCount = 0; //보너스 똥 잔여 개수
+    public int BonusObjCount = 0; //보너스 똥 잔여 개수
 
     // 게임 상태
     public enum GameState { Lobby, Play, Bonus, End }
