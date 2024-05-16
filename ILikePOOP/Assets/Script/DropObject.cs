@@ -8,6 +8,7 @@ public class DropObject : MonoBehaviour
     
     // 오브젝트 데이터
     public int ObjScore;
+    public int ObjTotalScore;
     public int ObjHp;
     public int Speed = 3;
 
@@ -63,40 +64,48 @@ public class DropObject : MonoBehaviour
             case DropObjectType.Normal_Poop:
                 ObjScore += 5;
                 ObjHp += 5;
+                ObjTotalScore += 5;
                 break;
 
             case DropObjectType.Golden_Poop:
                 ObjScore += 10;
+                ObjTotalScore += 10;
                 ObjHp += 10;
                 break;
 
             case DropObjectType.Bonus_Poop:
                 ObjScore += 15;
+                ObjTotalScore += 15;
                 ObjHp += 15;
                 break;
 
             case DropObjectType.Tissue:
                 ObjScore -= 7;
+                ObjTotalScore -= 7;
                 ObjHp -= 5;
                 break;
 
             case DropObjectType.Phone:
                 ObjScore -= 7;
+                ObjTotalScore -= 7;
                 ObjHp -= 5;
                 break;
 
             case DropObjectType.Paper_Cup:
                 ObjScore -= 7;
+                ObjTotalScore -= 7;
                 ObjHp -= 10;
                 break;
 
             case DropObjectType.Trash_Bag:
                 ObjScore -= 7;
+                ObjTotalScore -= 7;
                 ObjHp -= 10;
                 break;
 
             case DropObjectType.Cigarette_Butt:
                 ObjScore -= 7;
+                ObjTotalScore -= 7;
                 ObjHp -= 15;
                 break;
 

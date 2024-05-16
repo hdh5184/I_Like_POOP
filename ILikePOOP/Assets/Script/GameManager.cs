@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public Image HpBar_Fill;
     public TMP_Text GmaeOverText;
     public GameObject RestartButton;
+    public TextMeshProUGUI Total_Score;
 
     // Background 스프라이트 저장
     public Sprite[] BackgroundSprite;
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     public int stage;
     public int score;
+    public int total_score;
 
     int[] score_goul = { 100, 200, 300 };
     public float Player_Hp;
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour
     {
         stage = 0;
         score = 0;
+        total_score = 0;
         gameState = GameState.Play;
         GmaeOverText.gameObject.SetActive(false);
         RestartButton.SetActive(false);
@@ -105,8 +108,9 @@ public class GameManager : MonoBehaviour
                 if (dropTime >= 1f) Drop();
 
                 HpBar_Fill.fillAmount = Player_Hp / 100;
+                Total_Score.text = $"{total_score}";
                 Text_Score.text = $"{score}";
-
+                
                 // 스테이지 통과 조건 점수 이상 달성 시 StageClear() 실행
                 if (score >= score_goul[stage - 1])
                 {
@@ -118,6 +122,7 @@ public class GameManager : MonoBehaviour
             case GameState.Bonus:
 
                 Text_Score.text = $"{score}";
+                Total_Score.text = $"{total_score}";
                 if (BonusObjCount == 0)
                 {
                     StageInit();

@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
             DropObject dropObject = collision.GetComponent<DropObject>();
 
             gm.score += dropObject.ObjScore;
+            gm.total_score += dropObject.ObjScore;
             gm.Player_Hp += dropObject.ObjHp;
             if (gm.score < 0) gm.score = 0;
             if (gm.Player_Hp > 100) gm.Player_Hp = 100;
@@ -86,6 +87,7 @@ public class Player : MonoBehaviour
 
             gm.score += dropObject.ObjScore;
             gm.Player_Hp += dropObject.ObjHp;
+            gm.total_score += dropObject.ObjScore;
             if (gm.Player_Hp > 100) gm.Player_Hp = 100;
 
             gm.BonusObjCount--;
